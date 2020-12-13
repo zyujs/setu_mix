@@ -27,9 +27,12 @@ def add_salt(data):
     salt = ''.join(random.sample(string.ascii_letters + string.digits, 6))
     return data + bytes(salt, encoding="utf8")
 
-def format_setu_msg(image):
+def format_setu_msg(group_id, image):
     base64_str = f"base64://{base64.b64encode(add_salt(image['data'])).decode()}"
-    msg = f'title:{image["title"]}\nauthor:{image["author"]}\nid:{image["id"]}\n[CQ:image,file={base64_str}]'
+    if get_group_config(group_id, "xml"):
+        msg = f'[CQ:cardimage,file={base64_str},source={image["title"]}]'
+    else:
+        msg = f'title:{image["title"]}\nauthor:{image["author"]}\nid:{image["id"]}\n[CQ:image,file={base64_str}]'
     return msg
 
 async def get_setu(group_id):
@@ -56,7 +59,7 @@ async def get_setu(group_id):
     if not image:
         return '获取失败'
     elif image['id'] != 0:
-        return format_setu_msg(image)
+        return format_setu_msg(group_id, image)
     else:
         return image['title']
 
