@@ -12,6 +12,7 @@ config = {
         "lolicon": True,
         "lolicon_r18": False,
         "acggov": False,
+        "xml": True,
     },
     "lolicon": {
         "mode": 1,
