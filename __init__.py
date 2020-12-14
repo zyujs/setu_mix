@@ -1,14 +1,7 @@
 import hoshino
 import asyncio
-import nonebot
-import random
 from .base import *
 from .config import get_config, get_group_config, set_group_config
-from datetime import timedelta
-from nonebot import Message, MessageSegment, message_preprocessor, on_command
-from nonebot.message import _check_calling_me_nickname
-from hoshino import R, Service, util
-
 
 HELP_MSG = '''色图/来n张色图 : 随机获取1张/n张色图
 搜[n张]色图 keyword : 搜索指定关键字的色图,附带数量可以获取多张
@@ -76,10 +69,10 @@ async def send_setu(bot, ev):
             gid = int(args[1])
         msg = f'group {gid} :'
         msg += f'\nwithdraw : {get_group_config(gid, "withdraw")}'
+        msg += f'\nxml : {get_group_config(gid, "xml")}'
         msg += f'\nlolicon : {get_group_config(gid, "lolicon")}'
         msg += f'\nlolicon_r18 : {get_group_config(gid, "lolicon_r18")}'
         msg += f'\nacggov : {get_group_config(gid, "acggov")}'
-        msg += f'\nxml : {get_group_config(gid, "xml")}'
     elif args[0] == 'fetch':
         await bot.send(ev, 'start fetch mission')
         await fetch_process()
@@ -95,7 +88,7 @@ async def send_setu(bot, ev):
 
 @sv.on_rex(r'^不够[涩瑟色]|^再来[点张份]|^[涩瑟色]图$|^[再]?来?(\d*)?[份点张]([涩色瑟]图)')
 async def send_random_setu(bot, ev):
-    num = 1    
+    num = 1
     match = ev['match']
     try:
         num = int(match.group(1))

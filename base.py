@@ -30,7 +30,7 @@ def add_salt(data):
 def format_setu_msg(group_id, image):
     base64_str = f"base64://{base64.b64encode(add_salt(image['data'])).decode()}"
     if get_group_config(group_id, "xml"):
-        msg = f'[CQ:cardimage,file={base64_str},source={image["title"]}]'
+        msg = f'[CQ:cardimage,file={base64_str},source={image["title"]} (id:{image["id"]} author:{image["author"]})]'
     else:
         msg = f'title:{image["title"]}\nauthor:{image["author"]}\nid:{image["id"]}\n[CQ:image,file={base64_str}]'
     return msg
