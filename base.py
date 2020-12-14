@@ -107,7 +107,7 @@ async def get_ranking_setu(group_id, number: int) -> (int, str):
     if not image:
         return '获取失败'
     elif image['id'] != 0:
-        return format_setu_msg(image)
+        return format_setu_msg(group_id, image)
     else:
         return image['title']
 
