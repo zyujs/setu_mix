@@ -7,7 +7,8 @@
         "withdraw": 0,
         "lolicon": true,
         "lolicon_r18": false,
-        "acggov": false
+        "acggov": false,
+        "xml": true
     },
     "lolicon": {
         "mode": 2,
