@@ -91,7 +91,7 @@ async def search_setu(group_id, keyword, num):
             image_list = await acggov_search_setu(keyword, num)
         if image_list and len(image_list) > 0:
             for image in image_list:
-                msg_list.append(format_setu_msg(image))
+                msg_list.append(format_setu_msg(group_id, image))
     return msg_list
 
 async def get_ranking(group_id, page: int = 0):
