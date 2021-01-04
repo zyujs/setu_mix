@@ -1,6 +1,6 @@
 # setu_mix
 
-基于HoshinoBot v2的涩图插件, 从 [acg-gov.com](https://acg-gov.com) 和 [lolicon.app](https://lolicon.app/) 获取图片.
+基于HoshinoBot v2的涩图插件, 从 [acgmx.com](https://acgmx.com) 和 [lolicon.app](https://lolicon.app/) 获取图片.
 
 本项目地址 https://github.com/zyujs/setu_mix
 
